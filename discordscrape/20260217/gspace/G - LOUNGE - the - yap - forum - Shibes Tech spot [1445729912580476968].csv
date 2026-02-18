@@ -1,0 +1,724 @@
+AuthorID,Author,Date,Content,Attachments,Reactions
+"365917907861110796","floatingtales","2025-12-03T10:54:31.5220000+00:00","WIPs, and stuff, sharing here for both accountability and sharing cool stuffs","","shibe (1),🔥 (1)"
+"365917907861110796","floatingtales","2025-12-04T01:51:54.1120000+00:00","4 Dec 2025,
+
+This is mostly going to be devlogs for today.
+
+Tried Google Antigravity. Pretty neat! very smart for helping me create frontend stuff as I am more adept in backend stuff. And I think it's still in beta that makes it good so I can use the features without any payment *as of now*. Did a couple of the office work things on this and man I'm impressed!
+
+Alright so I wanna start cracking on with this one side project I do have here: the same thing I'm doing for the company I'm working at, *but for my own company this time* . An ERP software for purchases of *ze bird spit*, invoicing, inventory management, trends and the likes. I guess this will be the overarching project I want to make and mayhaps some smaller projects on the side to keep up the motivation.
+
+As of the current state of events I've not got a lot. I think I've got a barebones monorepo set up with an env file package that we derive *all* environment variables from as we need to verify the types as well. Probably not going to do much today but design an ERD, with all the screwed up fundamentals of it first.
+
+Imma give this as a planned architecture as of now:
+```
+// general apps
+- apps:
+  - ERP (Either Next.js or just plain React app)
+  - Homepage (Astro)
+  - Backend (Express on Node.js)
+
+// things the apps interact with
+- packages:
+  - env package (shared env files)
+  - db package (postgress/mySQL on drizzle)
+  - lib package (shared functionalities between apps)
+  - cache package (redis stuff mostly)
+  - ui package (initially I thought of making Shadcn/UI reusable package here but... Shadcn's been at a downturn recently)
+
+// tooling for linting/typesafety
+- tools:
+  - typescript
+  - biome (debating whether I should put eslint/prettier here but Biome seems all encompassing)
+```
+
+Next.js has been a bloated ware recently, slow dev speeds, slow compile speeds etc. makes me want to shy away from Next projects. *but* it is probably one of the easiest to maintain if we're talking *pure* codebase tho.","","👍 (1)"
+"365917907861110796","floatingtales","2025-12-04T01:58:41.1170000+00:00","The thing that made me shy away a little on Express/Node is type-safety, but I think that if we got any RPC set up, meaning it's not a standard Get/Set/Put/Post CRUD API, rather a (most likely) TRPC set up, it could work.
+
+Leaning towards pure React as of now, but we'll see when I get stuff set up. We're gonna do db/Redis next before commiting to using whichever approach.
+
+Generally it's a choice between: Next.js *or* React + React Router + TRPC + Tanstack Query.
+
+idk but I'm doing typescript with minimally defined types (probably not good).","",""
+"835344347981414441","lui9094","2025-12-04T03:14:13.9050000+00:00","https://www.instagram.com/p/DRsOtsrCTu7/?igsh=MW1oMHA4Y2Jjb2pqOQ==","",""
+"835344347981414441","lui9094","2025-12-04T03:14:23.0240000+00:00","Thoughtsss @angeryshibe","",""
+"548368514277310464","blackfritz","2025-12-04T06:41:12.7380000+00:00","cool stuff, try react router","",""
+"548368514277310464","blackfritz","2025-12-04T06:41:26.9930000+00:00","or if feeling adventurous marko.js","",""
+"548368514277310464","blackfritz","2025-12-04T06:41:49.1290000+00:00","backend try nest js","",""
+"365917907861110796","floatingtales","2025-12-04T07:27:13.7140000+00:00","Typescript decorators intimidate me lmao. I did not have a fun time with them when I was doing angular.","",""
+"365917907861110796","floatingtales","2025-12-04T07:29:14.6270000+00:00","but I've never seen any nest js stuff with any RPCs, would you recommend?","",""
+"548368514277310464","blackfritz","2025-12-04T07:40:24.4750000+00:00","I see, it takes a while to understand, but I can't go back to express now.
+
+With Nest it's easier to collab and communicate with team because there is standard architecture built in. So usually I just pinpoint the relevant doc to other dev , haha
+
+Killer feature is there is Nest package automatically create swagger doc with all the parameter. Saving some time documenting API in postman for the QA and Front end","",""
+"548368514277310464","blackfritz","2025-12-04T07:41:09.1290000+00:00","Haven't tried trpc, looks neat. I still use old boring Rest APIs","",""
+"548368514277310464","blackfritz","2025-12-04T07:42:00.0140000+00:00","I'm afraid our QA can't test it without swagger or postman endpoint","",""
+"365917907861110796","floatingtales","2025-12-04T07:43:13.6720000+00:00","*must be nice working with other devs*
+
+*I'm a solo dev even in my company, I do everything on my own, that includes devops, deployment, etc*","","😭 (1)"
+"365917907861110796","floatingtales","2025-12-04T07:46:19.1970000+00:00","honestly, as boring as Rest APIs are, *they work*, and it's mostly enough for about 99% of usecases","",""
+"365917907861110796","floatingtales","2025-12-04T07:46:36.9480000+00:00","never got into the GraphQL stuff, last I heard it's dying","",""
+"365917907861110796","floatingtales","2025-12-04T07:47:38.2590000+00:00","but trpc is p. neat! I've got a project with it during the Next.js pages router and it works very good!","",""
+"548368514277310464","blackfritz","2025-12-04T07:51:38.9620000+00:00","Wahhh it make sense noww, then nest js is overkill😭 😭 
+
+Yeah for full stack ,react router (I think it has it's own small backend already) should be enough, and combine it with trpc","",""
+"548368514277310464","blackfritz","2025-12-04T07:51:58.0490000+00:00","Where do you usually deploy?","",""
+"548368514277310464","blackfritz","2025-12-04T07:52:18.2680000+00:00","Agree lol","",""
+"548368514277310464","blackfritz","2025-12-04T07:52:44.4400000+00:00","That makes me wanna try","",""
+"365917907861110796","floatingtales","2025-12-04T07:53:45.8530000+00:00","I'm a vercel guy! I could do the whole EC2 deployment but man. I don't want to think CI/CD when I'm already thinking code.","",""
+"365917907861110796","floatingtales","2025-12-04T07:53:58.9710000+00:00","vercel you just plop it on and zoom it goes online","",""
+"548368514277310464","blackfritz","2025-12-04T07:54:58.7170000+00:00","Cool. I have been trying to test out cloudflare worker, sold to their features. But never got it right","",""
+"365917907861110796","floatingtales","2025-12-04T07:55:39.3200000+00:00","***cloudflare***","",""
+"365917907861110796","floatingtales","2025-12-04T07:56:09.3860000+00:00","***the cloudflare outage of November 18***","","😂 (1)"
+"548368514277310464","blackfritz","2025-12-04T07:57:13.9620000+00:00","That shook the world","","😂 (1)"
+"365917907861110796","floatingtales","2025-12-04T08:08:32.4650000+00:00","these are *concept* techs lui, I don't think we're going to get anything like these soon.","","👍 (1)"
+"365917907861110796","floatingtales","2025-12-06T16:48:29.3140000+00:00","6 December 2025,
+
+More devlogs
+
+I made an ERD, there are a couple of quirks that I need to straighten out, would need refinement, probably 2-3 more tables but we've got this so far.
+
+There are a couple of quirks that I want to put in, we've got duplicated data in the Order table (name address, etc.) this is stored in a snapshot manner, as people might move locations, change phone numbers etc. I've also merged both customers and receivers as technically it's just a book log of addresses and phone numbers.
+
+Initially did separate a little bit more with the products, we've got the product *type* and product *flavor* but I guess I can't be bothered to. A lot of the things got an is_active thing to indicate whether or not the thing will be queried for choosing in the select boxes.
+
+Couple things I kinda want to add tho: As of now we don't really have item inventories, I'll probably do the same thing as Transactions/Accounts to do that, products will act as an ""account"" of sorts, which would mean Order_Items_product will be tied to the newly created inventory table. Yeah that'll work, Imma go update that soon.
+
+Next up would be thinking what DB would I want to store this with? I was thinking Mongodb, but man, SQL seems a better option at this point. Mongo/Mongoose is always an option tho, but I'm thinking maybe right now we're using Postgres/MySQL on Drizzle. I'm thinking maybe a free-tier db right now, I'm guessing Neon or the likes will work, don't want to provision a db in AWS in this scale.","https://cdn.discordapp.com/attachments/1445729912580476968/1446906153404596305/Taoyuan.png?ex=6996961d&is=6995449d&hm=dd429c2c690038a763e8df9fb40979c377c995e87380e4ca066d00eb92196001&","👍 (3)"
+"548368514277310464","blackfritz","2025-12-07T06:47:37.6150000+00:00","for postgres, you can try supabase","","👍 (1)"
+"365917907861110796","floatingtales","2025-12-07T08:59:01.8310000+00:00","I've heard only good things with supabase, I could try give that a whirl","",""
+"548368514277310464","blackfritz","2025-12-07T23:34:19.9980000+00:00","Recently got info next js cve score is 10/10","",""
+"365917907861110796","floatingtales","2025-12-08T01:43:47.0600000+00:00","oh yeah about this, there was a vulnerability, I think it's patched now. some versions of next and react was vulnerable.","",""
+"365917907861110796","floatingtales","2025-12-25T15:17:32.3420000+00:00","25 December 2025
+
+Merry Christmas! More devlogs!
+
+So I did a couple of things now, I changed the database a little bit, added a table to store inventory stock, and added a couple of roles in the admin section.
+
+Nothing much of note other than we do have a db and env packages now. 2 packages is done, the way Biome is set up right now is that there is a biome.json at the root of the monorepo.
+
+We've got this at the moment.
+
+> // general apps
+> - apps:
+>   - ERP (React app)
+>   - Homepage (Astro)
+>   - Backend (Express on Node.js)
+> 
+> // things the apps interact with
+> - packages:
+>   - cache package (redis)
+>   - db package (postgress) [X]
+>   - env package (shared env) [X]
+>   - lib package (shared functionalities between apps)
+>   - ui package
+> 
+> // tooling for linting/typesafety
+> - tools:
+>   - typescript [X]
+>   - ~~biome~~ (put biome on root of monorepo instead)","https://cdn.discordapp.com/attachments/1445729912580476968/1453768634164973682/image.png?ex=699680cc&is=69952f4c&hm=a81dab8a06d0a0b677d3815dc4e620f667ab70fc674564c8baf526220483d862&",""
+"365917907861110796","floatingtales","2025-12-25T15:26:57.7640000+00:00","Let me talk a little bit in depth, the env package isn't nothing too big, it's basically a single typescript file that has a module exports.
+
+The package structure is like this:
+
+> env/
+>   env.ts
+>   package.json
+>   tsconfig.json
+
+3 file package, small but kinda powerful imo.
+
+as of now, we got this in env.ts
+
+> import { z } from ""zod"";
+> 
+> const envSchema = z.object({
+>     NODE_ENV: z.enum([""development"", ""production"", ""test""]),
+>     POSTGRES_URL_NON_POOLING: z.string(),
+> });
+> 
+> export const env = envSchema.parse({
+>     NODE_ENV: process.env.NODE_ENV,
+>     POSTGRES_URL_NON_POOLING: process.env.POSTGRES_URL_NON_POOLING,
+> });
+
+This would be expanded when we add more environment variables, but it's basically pulling process.env stuff and putting it in a single env object, so when we need to use something we can just import it, like so:
+
+> import { env } from ""@taoyuan/env""
+> 
+> console.log(env.NODE_ENV)
+
+Now the good thing about this is that it is typesafe, which is always a concern in javascript. also with zod, you can assert a type to the env with zod. We can assert a string to a number with it.","",""
+"365917907861110796","floatingtales","2025-12-25T15:47:05.7510000+00:00","now with the db package, the setup is also quite simple, but as y'all know, less code = less maintenance.
+
+Imma gloss over the boring parts like drizzle config and stuff, but generally the gist is like so:
+
+> db/src/
+>   schema/
+>     enums/
+>       _index.ts (underscore for sorting)
+>       NameOne-Enum.ts
+>       NameTwo-Enum.ts
+>     relations/
+>       _index.ts
+>       TableOne-Relations.ts
+>       TableTwo-Relations.ts
+>     tables/
+>       _index.ts
+>       TableOne-Table.ts
+>       TableTwo-Table.ts
+
+I'm still a little bit iffy with the snake case/camel case naming, but then again, the hardest thing for a programmer is cache invalidation (which will theoretically be handled with trpc), and *naming things*.
+
+Why I settled with CamelCase-Snake naming is that I initially do pure CamelCase naming but I gotten a little bit of a snag when it did not sort alphabetically properly when it's sorted like:
+
+> Order.ts
+> OrderItem.ts
+> OrderItemProduct.ts
+
+in the Tables Folder. 
+
+Yet in the relations folder it's:
+
+> OrderItemProductRelations.ts
+> OrderItemRelations.ts
+> OrderRelations.ts
+
+
+Hence the weird CamelCase-Snake naming convention.
+
+But generally with that setup we got a very clear separation of concerns, so on we go.","",""
+"365917907861110796","floatingtales","2025-12-25T17:12:12.7950000+00:00","Oh also, I provisioned a db in Neon right now, Supabase would work too, but as of now, I guess Neon would work. The only thing that's kinda different would be the URL. We're probably gonna do redis next, would most likely just use upstash for it.","",""
+"365917907861110796","floatingtales","2025-12-25T18:44:36.3660000+00:00","DB is up and running.
+
+Timeline would be something as follows:
+
+- db design (done)
+- db provisioning (done)
+- cache design & provisioning
+- small cron job to be run in raspberry pi (to basically ping db once daily to keep it running)
+- backend development
+- frontend ERP development
+- frontend Client facing website design/development","",""
+"365917907861110796","floatingtales","2025-12-26T02:40:49.4330000+00:00","26 December 2025,
+
+Happy Boxing day! Minor devlog now.
+
+It was early in the morn today but Redis instance is now up and running, provisioned in Upstash.
+
+Structure is like this
+
+> cache/src/
+>   lib/time-utils.ts
+>   cache.ts
+>   redis.ts
+
+nothing too fancy, but this works. redis.ts is the configuration, and cache.ts gives all of the functionality.
+
+cache.ts looks like this:
+
+> import { env } from ""@taoyuan/env"";
+> import { setExpireAt, TIME_CONSTANTS } from ""~/lib/time-utils"";
+> import redis from ""~/redis"";
+> 
+> const cache = {
+>     ping: async () => {
+>     return await redis.ping();
+>   },
+>   testGet: async () => {
+>       return await redis.get(""test"");
+>   },
+>     testSet: async () => {
+>         return await redis.set(""test"", ""hello world"", {
+>             px: TIME_CONSTANTS.TEN_MINUTES_IN_MS,
+>         });
+>     },
+>     setAuthorized: async ({ id }: { id: string }) => {
+>       return await redis.set(authorized:${<environment variable>}:${id}, ""true"", { pxat: setExpireAt() });
+>   },
+>   getAuthorized: async ({ id }: { id: string }) => {
+>       return await redis.get(authorized:${<environment variable>}:${id});
+>   },
+>   deleteAuthorized: async ({ id }: { id: string }) => {
+>       return await redis.del(authorized:${<environment variable>}:${id});
+>   },
+> };
+> 
+> export default cache;
+
+
+It's basically just an object that is composed of a function. I'm a fan of parameter object pattern, I know that it might seem a little excessive that right now we only kinda got one single param, and it is wrapped in an object, but hey, imho it gives readability and isn't prone to errors, so there's that.
+
+But as of now there are only a couple of things, a ping, and a couple of test get set and delete. rather than provisioning a redis for every environment, I guess the way I set up things right now is good enough.
+
+Also a slight change in the timeline,  I'm gonna create cron after the backend, we're gonna create a db ping endpoint before we do the cron.","",""
+"365917907861110796","floatingtales","2025-12-29T11:01:51.3600000+00:00","29 Dec 2025,
+
+Just a small note - *setting up TRPC 11.0 is kinda convoluted lmao, used to do the t3app Next.js/TRPC combo but man we're separating a lot of things now*","",""
+"575141979873083393","sukadeltoro","2026-01-17T02:59:50.4330000+00:00","@angeryshibe any recs for mini computers with wifi embedded or/and LAN compatible? Gonna use it for media monitoring and windows office suit/google workspace
+
+Basically mobile workstation","",""
+"365917907861110796","floatingtales","2026-01-17T06:28:36.1530000+00:00","I've got a raspberry pi 5 and it works good. Slightly on the more expensive end for a mini computer for it's specs but it works.
+
+Downside is that it's Linux (raspberryOS), not that it's a *bad thing* but for a windows user there might be an adjustment period, also not really suitable for Windows office, libre is a good alternative tho.
+
+Other than this there's the N100 line of Intel NUCs, much more powerful, but comes at a higher premium, runs windows (maybe not win10 but should be ok enough to run win7), never had a N100 so I can't say personally, but I've heard good things.
+
+Imma give tokped links shortly","",""
+"365917907861110796","floatingtales","2026-01-17T06:29:27.5900000+00:00","Raspberry pi and the store I bought it from:
+
+https://tk.tokopedia.com/ZSa17ELwc/","",""
+"365917907861110796","floatingtales","2026-01-17T06:31:14.6710000+00:00","MSI N100 NUC:
+
+https://tk.tokopedia.com/ZSa17Tru4/","",""
+"365917907861110796","floatingtales","2026-01-17T06:33:02.8160000+00:00","Bear in mind that this is a *mini* PC, don't do intensive work on it.","",""
+"790860761291423754","beethozheng","2026-01-26T12:02:10.0430000+00:00","@angeryshibe saran tablet that isn't Apple budget 1,2 for work","",""
+"365917907861110796","floatingtales","2026-01-29T15:56:28.9370000+00:00","ok so what do you plan to do with it? Do you have a phone ecosystem already?
+
+Usually the best tablets are the ones of whatever phone brand you have, they might have shared functionalities here and there. but 1.2 jt for budget is pushing it.
+
+I have heard good things from Xiaomi pad, but that goes at 2.2ish iirc","",""
+"790860761291423754","beethozheng","2026-01-29T16:29:38.1530000+00:00","Wb the Huawei Matepad","",""
+"790860761291423754","beethozheng","2026-01-29T16:30:03.2740000+00:00","Mainly less lag for presentation","",""
+"790860761291423754","beethozheng","2026-01-29T16:30:10.9480000+00:00","Or for wfcs","",""
+"847083838105714699","monke_eat_banana","2026-01-29T16:30:16.2770000+00:00","Very interesting forum. @angeryshibe so you rely on Antigravity for front-end work? Have you encountered bugs with state management (I'm assuming you're using react)?
+
+I've only tried Magic Patterns which while helpful, often fell apart when handling interactions with a back-end","",""
+"790860761291423754","beethozheng","2026-01-29T16:30:22.5270000+00:00","Also","",""
+"790860761291423754","beethozheng","2026-01-29T16:30:47.6810000+00:00","For a prototype software me and @Tino are designing","",""
+"790860761291423754","beethozheng","2026-01-29T16:31:11.9550000+00:00","Basically an all around planner","",""
+"790860761291423754","beethozheng","2026-01-29T16:32:11.0400000+00:00","@Tino tolong jelaskan my mind is kinda blank","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:35:08.2400000+00:00","ola","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:35:17.9070000+00:00","i just woke up only for this specific reason","",""
+"790860761291423754","beethozheng","2026-01-29T16:35:26.9410000+00:00","1,2 is just a number I honestly made up, cuz my friend owes me and he's living off of my friend's cc, so if he can't pay me cash, might aswell get me a tab","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:36:12.3390000+00:00","basically, it's like a planner + local ai llm include inside it (similar to what apple do with their new siri stuff)","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:36:26.0640000+00:00","llm -> large language model (like google gemini, and etc)","",""
+"365917907861110796","floatingtales","2026-01-29T16:37:14.0180000+00:00","oh hey this sounds like a cool project! Notion-esque stuff but powered with LLM?","",""
+"790860761291423754","beethozheng","2026-01-29T16:37:31.0420000+00:00","Uhh basically a super planner AI","",""
+"790860761291423754","beethozheng","2026-01-29T16:37:35.5500000+00:00","That tracks your health","",""
+"790860761291423754","beethozheng","2026-01-29T16:37:37.4460000+00:00","Schedules","",""
+"790860761291423754","beethozheng","2026-01-29T16:37:39.7300000+00:00","Meals","",""
+"790860761291423754","beethozheng","2026-01-29T16:37:43.3020000+00:00","Finance dll","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:37:44.3010000+00:00","yes2","",""
+"790860761291423754","beethozheng","2026-01-29T16:37:47.4290000+00:00","Into one","",""
+"790860761291423754","beethozheng","2026-01-29T16:38:27.7330000+00:00","Finance, we're planning on actually working together with BI","",""
+"790860761291423754","beethozheng","2026-01-29T16:38:39.5890000+00:00","To get all the banks to bind it into our app","",""
+"790860761291423754","beethozheng","2026-01-29T16:38:50.0700000+00:00","So you can track your realtime finance","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:38:52.9520000+00:00","yes","",""
+"790860761291423754","beethozheng","2026-01-29T16:38:55.7900000+00:00","Cuz all the planners I used","",""
+"790860761291423754","beethozheng","2026-01-29T16:38:56.6990000+00:00","Well","",""
+"790860761291423754","beethozheng","2026-01-29T16:39:15.3790000+00:00","You have to actually manually change the bank balance","",""
+"365917907861110796","floatingtales","2026-01-29T16:39:36.6860000+00:00","I've never did Magic Patterns so I do not know, haha, but Antigravity is cool in the sense that if you have stuff you want to recreate but you've got stuff elsewhere, it does good! It recreates a lot of stuff in your app's style kinda perfectly sometimes","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:40:24.6600000+00:00","ouu","",""
+"365917907861110796","floatingtales","2026-01-29T16:40:28.0650000+00:00","kinda ambitious, this all encompassing super-app","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:40:48.1620000+00:00","i only use antigravity just because there's free access to opus","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:40:50.1490000+00:00","lol","",""
+"365917907861110796","floatingtales","2026-01-29T16:40:53.2170000+00:00","lol","",""
+"365917907861110796","floatingtales","2026-01-29T16:41:00.9180000+00:00","*as of now*","",""
+"365917907861110796","floatingtales","2026-01-29T16:41:11.3890000+00:00","here's to hoping we don't pay for antigravity","",""
+"790860761291423754","beethozheng","2026-01-29T16:41:26.0460000+00:00","Welp, although our app may or may not take over the jobs of a secretary","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:41:28.2180000+00:00","the google ai student plan really helps a lot with the usage limits ngl lol","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:41:44.5930000+00:00","just as an assistant","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:41:46.3760000+00:00","yes","",""
+"790860761291423754","beethozheng","2026-01-29T16:41:49.5810000+00:00","Uhh","",""
+"790860761291423754","beethozheng","2026-01-29T16:41:52.5950000+00:00","Niat saya sih","",""
+"790860761291423754","beethozheng","2026-01-29T16:42:01.4540000+00:00","Kalo orangnya ga cancel the plan Jam -1","",""
+"790860761291423754","beethozheng","2026-01-29T16:42:07.7920000+00:00","The app bakal bother the guy","",""
+"790860761291423754","beethozheng","2026-01-29T16:42:10.0430000+00:00","Sampe lakuin","","😂 (2)"
+"790860761291423754","beethozheng","2026-01-29T16:42:26.9030000+00:00","Also need to send proof to actually turn off the alarm","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:42:48.3730000+00:00","anomali emang","",""
+"365917907861110796","floatingtales","2026-01-29T16:43:01.7980000+00:00","tbh, what do you think y'alls MVP sementara ini?","",""
+"790860761291423754","beethozheng","2026-01-29T16:43:33.9610000+00:00","Hey gotta ragebait the people as much as I can :Pepeok:","",""
+"365917907861110796","floatingtales","2026-01-29T16:43:37.2340000+00:00","what's *the least you can do* to get this up and running?","",""
+"790860761291423754","beethozheng","2026-01-29T16:43:58.4220000+00:00","Pak Developer silakan @Tino","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:44:05.8730000+00:00","anjay","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:44:11.0520000+00:00","basically","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:44:25.5050000+00:00","still in the sketching phase","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:44:29.3320000+00:00","i mean","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:44:38.0670000+00:00","@PurwoZheng | angerymanagement buatin basic flownya dulu","",""
+"365917907861110796","floatingtales","2026-01-29T16:45:02.3370000+00:00","ini mau app apa tho? full stack PWA ato gimana?","",""
+"365917907861110796","floatingtales","2026-01-29T16:45:18.3310000+00:00","ato dart/flutter/react native?","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:45:27.7370000+00:00","probably flutter","",""
+"847083838105714699","monke_eat_banana","2026-01-29T16:45:30.0570000+00:00","Do you code the fetch logic by yourself or do you also let Antigravity handle it? I noticed that the agent I used creates lots of issues when there's data fetch, loading, and pop-ups involved","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:46:05.2100000+00:00","since it's going to run on a device, and it would be a bit easier just in case if we want to port it to other platform","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:46:10.7240000+00:00","just in case","",""
+"365917907861110796","floatingtales","2026-01-29T16:46:48.7400000+00:00","Oh yeah, the fetch logic and the backend stuff I always triple check, but most of the times Antigravity did really good.","",""
+"365917907861110796","floatingtales","2026-01-29T16:48:56.3290000+00:00","*PWA aja* wkwkwk","",""
+"847083838105714699","monke_eat_banana","2026-01-29T16:49:48.3050000+00:00","Seems like this might be a difficult project. Do you have an idea on what the app would look like? Do you expect it to be able to connect to other apps (like the calendar, email, etc)?","",""
+"1000953304567795865","ovaltinoo","2026-01-29T16:49:59.4610000+00:00","https://tenor.com/view/destructive-nuisance-the-office-michael-scott-annoying-gif-11765842","",""
+"790860761291423754","beethozheng","2026-01-29T16:50:25.4330000+00:00","Ofc it has to connect to the calender, email, etc","",""
+"365917907861110796","floatingtales","2026-01-29T16:50:34.1310000+00:00","Yeah, seems to me that this would need *multiple* people working on a team","",""
+"365917907861110796","floatingtales","2026-01-29T16:50:42.7270000+00:00","not a solo dev project","",""
+"790860761291423754","beethozheng","2026-01-29T16:50:50.6290000+00:00","Mmm lebih ke difficult to convince many banks to work tgt w us","",""
+"790860761291423754","beethozheng","2026-01-29T16:50:53.2590000+00:00","But we'll manage","",""
+"790860761291423754","beethozheng","2026-01-29T16:50:55.7530000+00:00",":Pepeok:","",""
+"847083838105714699","monke_eat_banana","2026-01-29T16:51:26.5140000+00:00","Damn ok","",""
+"365917907861110796","floatingtales","2026-01-29T16:51:49.9140000+00:00","bakal ok sih, so long you bayar API keys nya bank nya","",""
+"365917907861110796","floatingtales","2026-01-29T16:53:17.5310000+00:00","But when you are working with some banks like that, the thing that needs to be done is to secure a *lot* of stuff.","",""
+"575141979873083393","sukadeltoro","2026-01-29T16:53:18.6650000+00:00","Life Dashboard basically","",""
+"365917907861110796","floatingtales","2026-01-29T16:53:54.2810000+00:00","There are limitations on what can and can not be saved in a DB if you're working with banking details.
+
+Or rather, there are safety precautions","",""
+"365917907861110796","floatingtales","2026-01-29T16:54:31.0000000+00:00","Like, for instance, you should not be able to save cc numbers unless your DB is *properly* secured with standards (i.e. even the dev can't go look)","",""
+"575141979873083393","sukadeltoro","2026-01-29T16:55:15.2420000+00:00","I think OJK already got the best practices and standards on running gak sih? On PII via PDP?","",""
+"365917907861110796","floatingtales","2026-01-29T16:58:05.7760000+00:00","kalo cc data it should also comply with PCI DSS, but so far PII via PDP is a starting point","",""
+"365917907861110796","floatingtales","2026-01-29T17:00:33.4940000+00:00","which is why a lot of payments worldwide is being offloaded ke stuff kayak Stripe/Codapay/Xendit and the likes, soalnya the average businesses do not want to deal with these regulations","",""
+"365917907861110796","floatingtales","2026-02-07T12:02:35.1160000+00:00","7 February 2026,
+
+Haven't updated this in a while now, because work is work, and man, setting up TRPC is a bitch and a half, anyways, more devlogs.
+
+But now TRPC is set up, I'll talk a little bit about how setting that up is going.
+
+So TRPC (Typescript Remote Procedural Call), is an alternative to standard REST apis and GraphQL way of making APIs. I'd *not* touch GraphQL because man, I've worked with it a lot during my time wrangling the dying Gatsby.js framework, and the less said about that, the better it is.
+
+Thing is there are a couple of things that was considered on why TRPC is the choice for this app. so we're gonna do a pros and cons table for both
+
+REST APIs:
+Pros:
+- Easy to set up
+- There are many options (Express.js, Nest.js are the popular ones, we've got tsoa too, less popular but I've worked with it, then there's a hybrid thing like Elysia.js that really looks cool)
+- OpenAPI compliant out of the box, we've got all kinds of methods to use (GET, POST, PUT, PATCH, DELETE)
+- Some frameworks autogenerate Swagger docs so you don't *really* need to create documentation
+- Quick-ish dev experience initially, it's easy to hammer out some handlers
+
+Cons:
+- *not* typesafe end to end.
+- whenever you change a thing on the backend, *you need to modify the types of input in the front end as well* so there's that
+- Slow dev speeds when you're changing a lot of things in development i.e. not planning stuff out
+
+TRPC
+Pros:
+- Typesafe from end to end, granted you need to export the backend routers to the frontend too.
+- *move fast break nothing*, quick dev times once you're set up
+- Removes all redundant stuff from the OpenAPI standards, like man, POST, PUT, PATCH, DELETE are all the same thing, so we only have 2 methods to worry about, GET and POST
+
+Cons:
+- set up is a bitch and a half
+- set up is a bitch and three quarters
+- doesn't come with Swagger documentation.
+- did I mention set up is a bitch and a half?
+- seriously it takes a genie to set this up.","",""
+"847083838105714699","monke_eat_banana","2026-02-07T12:05:19.7090000+00:00","Nice. I'm assuming your project is a microservice? Does TRPC use protobuf as well?","",""
+"365917907861110796","floatingtales","2026-02-07T12:15:41.0130000+00:00","I don't think it will get a lot of users to generally use microservices haha, it's a monolith as of now, it's an admin panel of a business I'm working on with my mom.
+
+on protobuf, there is 2 TRPC packages that afaik are not related to each other, the Typescript RPC (trpc.io, a typescript framework) and typesafe RPC (trpc.group, a multi-language framework), I'm using trpc.io, not trpc.group, and afaik, trpc.io does not use protobuf, but trpc.group does.","",""
+"365917907861110796","floatingtales","2026-02-07T12:28:23.6550000+00:00","I'm going to talk about 3 concepts of trpc, right now, contexts, routing and procedures.
+
+context in trpc are the stuff that you get from the front end (simply put, it's request and response), and there's a lot of things that you can add to this so that it does not sprawl anywhere, like say, you can inject your database instance, your cache instance, your cookies, or heck, you can just destructure your cookie and take a token or so from it. The way it's set up right now is like so:
+
+```
+trpc.ts
+
+import { db } from ""@/path/to/db""
+import { cache } from ""@/path/to/cache""
+// the following can be whatever adapter you choose, it's framework agnostic, you can build it on nest.js as well, but I chose express
+import type { CreateExpressContextOptions } from ""@trpc/server/adapters/express"" 
+
+export const createTRPCContext = ({
+    req,
+    res,
+}: CreateExpressContextOptions) => {
+    const token = req.cookies.authorized as string | undefined;
+
+    // whatever you put in here can be accessed in *all* of the API endpoints if you so desire
+    return {
+        db,
+        cache,
+        req,
+        res,
+        token,
+    };
+};
+```
+
+when you are done creating the context, you can now create an instance of trpc like so:
+
+```
+import { initTRPC } from ""@trpc/server"";
+// this is a transformer so that you can use complex json stuff like bigint, Dates, Maps, Sets
+import superjson from ""superjson""
+
+export const t = initTRPC.context<typeof createTRPCContext>().create({
+    transformer: superjson,
+});
+
+// and now you can export these two things, I'll delve later:
+
+export const router = t.router;
+export const publicProcedure = t.procedure;
+```","",""
+"847083838105714699","monke_eat_banana","2026-02-07T12:31:39.7800000+00:00","I'm genuinely grateful that you posted here. Out of all forums in this server & Mabased, yours is easily the one I look forward to the most. But this is on me for expecting a tech forum in a political discord group","","🙏 (1)"
+"365917907861110796","floatingtales","2026-02-07T12:41:52.1120000+00:00","the way TRPC sets up APIs are this thing called *routers*, routers do make endpoints for the REST apis, the way you create an endpoint is like so:
+
+```
+.router/dummyRouter.ts
+
+import { router } from ""../trpc"";
+
+export const dummyRouter = router({
+    endpoint: // this is an endpoint
+});
+```
+
+Now we can compound a router with another, let's say something like this:
+
+```
+app.ts
+
+import { router } from ""./trpc""
+import { dummyRouter } from ""./routers/dummyRouter""
+
+export const appRouter = router({
+  dummy: dummyRouter
+})
+
+// to be exported to the frontend
+export type AppRouter = typeof appRouter
+```
+
+now we can make an express instance (or a nest.js instance, or an anything instance so long it's supported by the adapter:
+
+```
+import { createExpressMiddleware } from ""@trpc/server/adapters/express"";
+import cookieParser from ""cookie-parser"";
+import cors from ""cors"";
+import express from ""express"";
+import { dummyRouter } from ""./routers/dummy"";
+import { createTRPCContext, router } from ""./trpc"";
+
+export const appRouter = router({
+    dummy: dummyRouter,
+});
+
+export type AppRouter = typeof appRouter;
+
+const app = express();
+
+// cors and cookie set up, will refine this.
+app.use(
+    cors({
+        origin: (origin, callback) => {
+            callback(null, origin || true);
+        },
+        credentials: true,
+    }),
+);
+app.use(cookieParser());
+
+// indicate which path is the trpc path
+app.use(
+    ""/trpc"",
+    createExpressMiddleware({
+        router: appRouter,
+        createContext: createTRPCContext,
+    }),
+);
+
+app.listen(3000, () => {
+    console.log(""Server started on http://localhost:3000"");
+});
+
+```
+
+Now using the current setup, there *will be an api endpoint on* http:localhost:3000/trpc/dummy.endpoint
+do note that when you compound routers, the setup will be at <parentrouter>.<childrouter>","",""
+"365917907861110796","floatingtales","2026-02-07T12:43:02.4010000+00:00","I'm actually doing this for accountability hahaha, it's mostly for me to *actually* work and not laze around, not doing things. But I'm glad that you are looking forward to this!","",""
+"365917907861110796","floatingtales","2026-02-07T12:56:19.8680000+00:00","moving on: there are 2 procedures in trpc, *queries*, and *mutations*, the difference is as follows:
+
+think of *queries* as GET requests, these are used to retreive data from the frontend, and *mutations* are for anything else (POST, PUT, PATCH, DELETE). you make the endpoints like so:
+
+```
+.router/dummyRouter.ts
+
+import { router } from ""../trpc"";
+import { TestTable } from ""@/path/to/db"";
+
+export const dummyRouter = router({
+    testQuery: publicProcedure.query(async ({ ctx }) => {
+        // I'm using drizzle but this roughly translates to:
+        // SELECT * FROM 'test_table' WHERE 'id=1'
+        const data = await ctx.db.select().from(TestTable).where(eq(TestTable.id, 1))
+
+        //pinging cache
+        const fromCache = await ctx.cache.ping()
+
+        return { data }
+    }),
+    testMutation: publicProcedure.mutation(async({ ctx }) =>{
+         // this is kinda self explanatory
+         await ctx.db.delete(TestTable).where(eq(TestTable.id, 1))
+         return { message: ""test delete successful"" }
+    })
+});
+```
+
+Boom, now you've got 2 endpoints a GET request at, /trpc/dummy.testQuery and a POST request at, /trpc/dummy.testMutation","",""
+"365917907861110796","floatingtales","2026-02-07T13:03:06.6820000+00:00","Now primarily I think TRPC is set up with React/NextJs *specifically* with Tanstack React Query, You've got to set things up in the React frontend like so:
+
+```
+./utils/trpc.ts
+
+import { QueryClient } from ""@tanstack/react-query"";
+import type { AppRouter } from ""@/path/to/trpc"";
+import { createTRPCClient, httpBatchLink } from ""@trpc/client"";
+import { createTRPCOptionsProxy } from ""@trpc/tanstack-react-query"";
+import superjson from ""superjson"";
+
+// I'll delve deeper on these when we're doing the frontend bit, but not today
+export const queryClient = new QueryClient();
+const trpcClient = createTRPCClient<AppRouter>({
+    links: [
+        httpBatchLink({
+            url: ""http://localhost:3000/trpc"", //or, your path the server
+            transformer: superjson,
+        }),
+    ],
+});
+
+export const trpc = createTRPCOptionsProxy<AppRouter>({
+    client: trpcClient,
+    queryClient,
+});
+
+```
+
+Then you've got to set up the providers:
+```
+./main.tsx
+
+import { QueryClientProvider } from ""@tanstack/react-query"";
+import { createRouter, RouterProvider } from ""@tanstack/react-router"";
+import { StrictMode } from ""react"";
+import { createRoot } from ""react-dom/client"";
+import ""./index.css"";
+import { routeTree } from ""./routeTree.gen""; //this is tanstack router stuff, ignore this as of now
+import { queryClient } from ""./utils/trpc"";
+
+const router = createRouter({ routeTree });
+
+declare module ""@tanstack/react-router"" {
+    interface Register {
+        router: typeof router;
+    }
+}
+
+const rootElement = document.getElementById(""root"");
+if (!rootElement) throw new Error(""Failed to find the root element"");
+
+createRoot(rootElement).render(
+    <StrictMode>
+        <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+        </QueryClientProvider>
+    </StrictMode>,
+);
+```","",""
+"365917907861110796","floatingtales","2026-02-07T13:10:30.9440000+00:00","now YOU CAN USE TRPC IN YOUR FRONTEND, in any of your components you can do stuff like:
+
+```
+./Component/Component.tsx
+
+import { useMutation, useQuery } from ""@tanstack/react-query"";
+import { trpc } from ""../utils/trpc"";
+
+export default Component(){
+  // this is preset from tanstack query, you have data, isLoading, error baked in so that you can deal with loading states
+  const { data, isLoading, error } = useQuery(trpc.dummy.testQuery.queryOptions())
+  
+  // mutation happens when an event occurs
+  const mutation = useMutation = useMutation(trpc.dummy.testMutation.mutationOptions())
+
+  if(isLoading) return <div>Loading...</div>
+  if(error) return <div>Error: {error.message}</div>
+
+  return (
+    <div>
+      {data}
+      <button onClick={()=> mutation.mutate()}>mutation</button>
+    </div>
+  )
+
+}
+```
+
+Neat AF isn't it?","",""
+"847083838105714699","monke_eat_banana","2026-02-07T13:12:20.0610000+00:00","Very annoying to setup. How much faster is it compared to REST? This seems to still use JSON instead of binary data","",""
+"365917907861110796","floatingtales","2026-02-07T13:17:40.5850000+00:00","alright now, on *inputs and how it is typesafe*, the way it is set up in the backend is this:
+
+```
+.router/dummyRouter.ts
+
+import { router } from ""../trpc"";
+import { TestTable } from ""@/path/to/db"";
+import { z } from ""zod""
+
+export const dummyRouter = router({
+    testQuery: publicProcedure
+               .input(z.object( id: z.number() ))  // we're using Zod as a type validator here
+               .query(async ({ input, ctx }) => {
+        // I'm using drizzle but this roughly translates to:
+        // SELECT * FROM 'test_table' WHERE 'id=*whatever input is*'
+        const data = await ctx.db.select().from(TestTable).where(eq(TestTable.id, input.id))
+
+        //pinging cache
+        const fromCache = await ctx.cache.ping()
+
+        return { data }
+    }),
+    testMutation: publicProcedure
+                  .input(z.object( id: z.number() ))
+                  .mutation(async({ input, ctx }) =>{
+         // this is kinda self explanatory
+         await ctx.db.delete(TestTable).where(eq(TestTable.id, input))
+         return { message: ""test delete successful"" }
+    })
+});
+```
+
+
+and the way that you do that in the frontend is like so:
+```
+./Component/Component.tsx
+
+import { useMutation, useQuery } from ""@tanstack/react-query"";
+import { trpc } from ""../utils/trpc"";
+
+export default Component(){
+  // queryOptions HAS TO SATISFY the input type, if not it WILL throw an error
+  const { data, isLoading, error } = useQuery(trpc.dummy.testQuery.queryOptions({id:1}))
+  
+  // mutation happens when an event occurs
+  const mutation = useMutation = useMutation(trpc.dummy.testMutation.mutationOptions())
+
+  if(isLoading) return <div>Loading...</div>
+  if(error) return <div>Error: {error.message}</div>
+
+  return (
+    <div>
+      {data}
+      <button onClick={()=> mutation.mutate({id:1})}>mutation</button>  {// Likewise here, mutateOptions HAS TO SATISFY the input type as defined from the backend }
+    </div>
+  )
+
+}
+```
+
+Now all your things are typesafe","",""
+"365917907861110796","floatingtales","2026-02-07T13:25:35.4990000+00:00","The main drawback in TRPC is always the setup, but what it found after the setup complexity, is that now everything is typesafe. it's a tradeoff that some would want to consider before setting this up. I do know that prior to wanting to create this with TRPC. I've worked with TRPC before too so I guess that familiarity is what makes me confident I can set this up (even when it takes a good 2-3 weeks to do so)
+
+But if you want an out of the box setup for Next.js, there's a good starter that you can just clone and it's already packaged with TRPC. You're just gonna do the routers and the db stuff on your part and it's great.
+
+You can check it out here: https://create.t3.gg/
+
+No setup, everything has been done for you, and you just use it.
+
+Doesn't work for me, because of 2 things:
+1. I'm making a monorepo set up with a lot of complexity, multiple apps and packages.
+2. I'm moving away a little from Next.Js because it's a dependency hell and I'm just trying to make stuff happen on plain react.","",""
+"365917907861110796","floatingtales","2026-02-07T13:33:20.5140000+00:00","but *how fast* it is as compared to a standard REST API... speed-wise is almost the same, I'd say. and yes, it still uses JSON
+
+of course you can binarize the data that's transfered here and there, with stuff like blobs and basically kinda encode/decode that, but that way loses a lot of what makes TRPC special, *the typesafety*.","",""
+"365917907861110796","floatingtales","2026-02-07T13:38:59.5850000+00:00","speaking of, there is a github issue raised on this lol:
+
+https://github.com/trpc/trpc/issues/1937","",""
